@@ -1,0 +1,1226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Glam by [Your Name] — Makeup · Skin · Hair</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --mocha: #1a110d;
+    --mocha2: #231710;
+    --gold: #c9a96e;
+    --gold-light: #e8d5a3;
+    --gold-pale: #f5ead4;
+    --cream: #f5f0e8;
+    --rose: #c4888a;
+    --rose-pale: #f0dede;
+    --charcoal: #2c1f18;
+    --muted: #9e8778;
+    --border: rgba(201,169,110,0.18);
+    --border-hover: rgba(201,169,110,0.45);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; font-size: 16px; }
+  body {
+    background: var(--mocha);
+    color: var(--cream);
+    font-family: 'Raleway', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+  ::selection { background: var(--gold); color: var(--mocha); }
+
+  /* SCROLLBAR */
+  ::-webkit-scrollbar { width: 5px; }
+  ::-webkit-scrollbar-track { background: var(--mocha); }
+  ::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 10px; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 1.4rem 4rem;
+    transition: all 0.4s ease;
+  }
+  nav.scrolled {
+    background: rgba(26,17,13,0.96);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 1rem 4rem;
+  }
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.4rem;
+    color: var(--gold);
+    letter-spacing: 0.04em;
+    text-decoration: none;
+  }
+  .nav-logo span { font-style: italic; color: var(--cream); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a {
+    color: var(--muted);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    font-weight: 500;
+    transition: color 0.3s;
+  }
+  .nav-links a:hover { color: var(--gold); }
+  .nav-book-btn {
+    background: transparent;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 0.55rem 1.4rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+    text-decoration: none;
+  }
+  .nav-book-btn:hover { background: var(--gold); color: var(--mocha); }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+  .hamburger span { width: 24px; height: 1px; background: var(--gold); transition: all 0.3s; }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 6rem 2rem 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 60% 40%, rgba(201,169,110,0.07) 0%, transparent 65%),
+                radial-gradient(ellipse at 20% 80%, rgba(196,136,138,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .hero-ornament {
+    position: absolute;
+    font-family: 'Playfair Display', serif;
+    font-size: 18rem;
+    color: rgba(201,169,110,0.04);
+    font-weight: 700;
+    letter-spacing: -0.05em;
+    pointer-events: none;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -52%);
+    white-space: nowrap;
+    user-select: none;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 820px; }
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+  }
+  .hero-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(3.2rem, 7vw, 6.5rem);
+    line-height: 1.07;
+    font-weight: 400;
+    color: var(--cream);
+    margin-bottom: 1.2rem;
+  }
+  .hero-title em { font-style: italic; color: var(--gold); }
+  .hero-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.1rem, 2vw, 1.45rem);
+    color: var(--muted);
+    font-weight: 300;
+    margin-bottom: 2.8rem;
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+  .hero-ctas { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; }
+  .btn-primary {
+    background: var(--gold);
+    color: var(--mocha);
+    padding: 1rem 2.8rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-ghost {
+    background: transparent;
+    color: var(--cream);
+    padding: 1rem 2.8rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 500;
+    cursor: pointer;
+    border: 1px solid rgba(245,240,232,0.3);
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .btn-ghost:hover { border-color: var(--cream); transform: translateY(-2px); }
+  .hero-scroll {
+    position: absolute; bottom: 2.5rem; left: 50%;
+    transform: translateX(-50%);
+    display: flex; flex-direction: column; align-items: center; gap: 0.6rem;
+    color: var(--muted); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+  }
+  .scroll-line {
+    width: 1px; height: 50px;
+    background: linear-gradient(to bottom, var(--gold), transparent);
+    animation: scrollDown 1.8s ease-in-out infinite;
+  }
+  @keyframes scrollDown {
+    0% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform: scaleY(1); transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
+  }
+
+  /* SECTION BASE */
+  section { padding: 7rem 4rem; }
+  .section-eyebrow {
+    font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.8rem; font-weight: 500;
+  }
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: 400; color: var(--cream); line-height: 1.15;
+    margin-bottom: 1rem;
+  }
+  .section-title em { font-style: italic; color: var(--gold); }
+  .section-divider {
+    width: 60px; height: 1px;
+    background: linear-gradient(to right, var(--gold), transparent);
+    margin: 1.2rem 0 2rem;
+  }
+
+  /* ABOUT STRIP */
+  .about-strip {
+    background: var(--mocha2);
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 1fr 2px 1fr 2px 1fr;
+    gap: 3rem;
+    align-items: center;
+    text-align: center;
+  }
+  .about-strip-divider { width: 1px; height: 60px; background: var(--border); margin: 0 auto; }
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem; color: var(--gold); font-weight: 400;
+    line-height: 1; margin-bottom: 0.4rem;
+  }
+  .stat-label { font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+
+  /* PORTFOLIO */
+  #portfolio { background: var(--mocha); }
+  .portfolio-header { text-align: center; max-width: 600px; margin: 0 auto 3.5rem; }
+  .filter-tabs {
+    display: flex; justify-content: center; gap: 0.4rem;
+    flex-wrap: wrap; margin-bottom: 3rem;
+  }
+  .filter-tab {
+    padding: 0.55rem 1.5rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase;
+    font-weight: 500; cursor: pointer;
+    border: 1px solid var(--border);
+    color: var(--muted); background: transparent;
+    transition: all 0.3s;
+  }
+  .filter-tab:hover, .filter-tab.active {
+    border-color: var(--gold); color: var(--gold);
+    background: rgba(201,169,110,0.07);
+  }
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.2rem;
+  }
+  .portfolio-item {
+    position: relative; overflow: hidden; aspect-ratio: 3/4;
+    cursor: pointer; transition: transform 0.4s ease;
+  }
+  .portfolio-item:hover { transform: scale(1.02); }
+  .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+  .portfolio-item:hover .portfolio-img { transform: scale(1.08); }
+  .portfolio-img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: transform 0.6s ease;
+    background: var(--charcoal);
+  }
+  /* CSS art placeholders for portfolio */
+  .p-makeup-1 { background: linear-gradient(135deg, #2d1b24 0%, #4a1f35 40%, #6b2d4a 70%, #3d1a2c 100%); }
+  .p-makeup-2 { background: linear-gradient(160deg, #1f1520 0%, #3d1c2e 50%, #5c2440 100%); }
+  .p-makeup-3 { background: linear-gradient(120deg, #261520 0%, #471d30 45%, #2d1018 100%); }
+  .p-skin-1 { background: linear-gradient(150deg, #1a1810 0%, #332d20 50%, #4a4030 100%); }
+  .p-skin-2 { background: linear-gradient(140deg, #1d1810 0%, #3d3020 55%, #5a4835 100%); }
+  .p-skin-3 { background: linear-gradient(125deg, #221a12 0%, #42341e 50%, #5e4c2a 100%); }
+  .p-hair-1 { background: linear-gradient(145deg, #10161a 0%, #1c2d38 50%, #234050 100%); }
+  .p-hair-2 { background: linear-gradient(155deg, #0f1520 0%, #1a2540 55%, #223060 100%); }
+  .p-hair-3 { background: linear-gradient(130deg, #101418 0%, #1e2a35 50%, #283848 100%); }
+  .p-other-1 { background: linear-gradient(140deg, #101a10 0%, #1e361e 50%, #2a4a2a 100%); }
+  .p-other-2 { background: linear-gradient(155deg, #1a1010 0%, #36201e 55%, #4a2c28 100%); }
+  .p-other-3 { background: linear-gradient(130deg, #18101a 0%, #341e38 50%, #4a2a50 100%); }
+  .portfolio-placeholder {
+    width: 100%; height: 100%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-style: italic; color: rgba(255,255,255,0.12);
+    font-size: 1.1rem; text-align: center;
+    position: relative;
+  }
+  .portfolio-placeholder::after {
+    content: '';
+    position: absolute; inset: 16px;
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .portfolio-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(26,17,13,0.95) 0%, rgba(26,17,13,0.4) 60%, transparent 100%);
+    opacity: 0; transition: opacity 0.4s ease;
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 1.5rem;
+  }
+  .portfolio-overlay h3 {
+    font-family: 'Playfair Display', serif; font-size: 1.05rem;
+    color: var(--cream); font-weight: 400; margin-bottom: 0.25rem;
+  }
+  .portfolio-overlay span { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; }
+  .upload-notice {
+    background: rgba(201,169,110,0.06);
+    border: 1px dashed rgba(201,169,110,0.25);
+    text-align: center; padding: 2rem;
+    margin-top: 2.5rem; color: var(--muted);
+    font-size: 0.82rem; font-style: italic; letter-spacing: 0.05em;
+  }
+  .upload-notice strong { color: var(--gold); font-style: normal; }
+
+  /* PRICING */
+  #pricing { background: var(--mocha2); }
+  .pricing-header { text-align: center; max-width: 560px; margin: 0 auto 4rem; }
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px; margin: 0 auto;
+  }
+  .pricing-card {
+    border: 1px solid var(--border);
+    padding: 2.5rem;
+    position: relative;
+    transition: all 0.4s ease;
+    background: var(--mocha);
+  }
+  .pricing-card:hover { border-color: var(--border-hover); transform: translateY(-4px); }
+  .pricing-card.featured {
+    border-color: var(--gold);
+    background: linear-gradient(160deg, var(--charcoal) 0%, var(--mocha) 100%);
+  }
+  .featured-badge {
+    position: absolute; top: -1px; right: 2rem;
+    background: var(--gold); color: var(--mocha);
+    font-size: 0.63rem; letter-spacing: 0.18em; text-transform: uppercase;
+    font-weight: 600; padding: 0.35rem 0.9rem;
+    font-family: 'Raleway', sans-serif;
+  }
+  .pricing-icon { font-size: 1.6rem; margin-bottom: 1rem; }
+  .pricing-category {
+    font-size: 0.68rem; letter-spacing: 0.25em; text-transform: uppercase;
+    color: var(--gold); margin-bottom: 0.5rem; font-weight: 500;
+  }
+  .pricing-service {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.35rem; color: var(--cream); margin-bottom: 0.4rem; font-weight: 400;
+  }
+  .pricing-desc { font-size: 0.82rem; color: var(--muted); margin-bottom: 1.6rem; line-height: 1.6; }
+  .pricing-line {
+    display: flex; justify-content: space-between; align-items: baseline;
+    padding: 0.55rem 0; border-bottom: 1px solid var(--border);
+    font-size: 0.85rem; color: var(--muted);
+  }
+  .pricing-line:last-of-type { border-bottom: none; }
+  .pricing-line .price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.1rem; color: var(--cream); font-weight: 500;
+  }
+  .pricing-note {
+    margin-top: 1.5rem; font-size: 0.72rem; color: var(--muted);
+    font-style: italic; border-top: 1px solid var(--border); padding-top: 1rem;
+  }
+  .pricing-duration { font-size: 0.68rem; color: var(--rose); }
+
+  /* BOOKING */
+  #booking { background: var(--mocha); }
+  .booking-layout {
+    display: grid; grid-template-columns: 1fr 1.6fr;
+    gap: 5rem; max-width: 1100px; margin: 0 auto;
+    align-items: start;
+  }
+  .booking-info { position: sticky; top: 7rem; }
+  .booking-info p { color: var(--muted); font-size: 0.9rem; margin-bottom: 1.5rem; line-height: 1.8; }
+  .booking-contact-item {
+    display: flex; align-items: center; gap: 0.8rem;
+    font-size: 0.82rem; color: var(--muted); margin-bottom: 0.7rem;
+  }
+  .booking-contact-item strong { color: var(--gold); }
+  .booking-form { display: flex; flex-direction: column; gap: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.45rem; }
+  .form-group label {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500;
+  }
+  .form-group input, .form-group select, .form-group textarea {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    color: var(--cream);
+    padding: 0.85rem 1rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 300;
+    transition: border-color 0.3s;
+    outline: none;
+    width: 100%;
+  }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+    border-color: var(--gold);
+    background: rgba(201,169,110,0.04);
+  }
+  .form-group select option { background: var(--charcoal); color: var(--cream); }
+  .form-group textarea { resize: vertical; min-height: 90px; }
+  .form-group input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.7) sepia(1) saturate(3) hue-rotate(10deg); }
+
+  /* TIMESLOTS */
+  .timeslot-section { }
+  .timeslot-label {
+    font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--gold); font-weight: 500; margin-bottom: 0.8rem;
+  }
+  .timeslot-grid {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .timeslot {
+    padding: 0.55rem 0.3rem;
+    text-align: center;
+    font-size: 0.75rem; font-weight: 500;
+    border: 1px solid var(--border);
+    color: var(--muted); cursor: pointer;
+    transition: all 0.25s;
+    font-family: 'Raleway', sans-serif;
+    background: transparent;
+    letter-spacing: 0.03em;
+  }
+  .timeslot:hover:not(.booked) { border-color: var(--gold); color: var(--gold); background: rgba(201,169,110,0.06); }
+  .timeslot.selected { border-color: var(--gold); background: var(--gold); color: var(--mocha); font-weight: 600; }
+  .timeslot.booked { opacity: 0.3; cursor: not-allowed; text-decoration: line-through; }
+  .timeslot-hint { font-size: 0.7rem; color: var(--muted); font-style: italic; }
+
+  .book-cta {
+    background: var(--gold);
+    color: var(--mocha);
+    padding: 1.1rem 2rem;
+    font-family: 'Raleway', sans-serif;
+    font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase;
+    font-weight: 600; cursor: pointer; border: none;
+    transition: all 0.3s; width: 100%;
+    display: flex; align-items: center; justify-content: center; gap: 0.6rem;
+  }
+  .book-cta:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .book-cta:disabled { opacity: 0.5; cursor: not-allowed; transform: none; }
+  .gcal-icon { width: 18px; height: 18px; }
+  .booking-policy {
+    font-size: 0.72rem; color: var(--muted); font-style: italic;
+    text-align: center; line-height: 1.6;
+  }
+  .booking-policy a { color: var(--gold); text-decoration: none; }
+
+  /* TESTIMONIALS */
+  #testimonials { background: var(--mocha2); }
+  .testi-header { text-align: center; max-width: 560px; margin: 0 auto 4rem; }
+  .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; max-width: 1100px; margin: 0 auto; }
+  .testi-card {
+    border: 1px solid var(--border); padding: 2rem;
+    background: var(--mocha); transition: border-color 0.3s;
+  }
+  .testi-card:hover { border-color: var(--border-hover); }
+  .testi-stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 1rem; letter-spacing: 0.1em; }
+  .testi-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.05rem; font-style: italic; color: var(--cream);
+    line-height: 1.7; margin-bottom: 1.2rem;
+  }
+  .testi-name { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); }
+  .testi-event { font-size: 0.72rem; color: var(--muted); }
+
+  /* FOOTER */
+  footer {
+    background: var(--charcoal);
+    border-top: 1px solid var(--border);
+    padding: 3rem 4rem;
+    display: grid; grid-template-columns: 2fr 1fr 1fr;
+    gap: 3rem;
+  }
+  .footer-brand { }
+  .footer-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem; color: var(--gold);
+    letter-spacing: 0.02em; margin-bottom: 0.8rem;
+  }
+  .footer-logo em { color: var(--cream); font-style: italic; }
+  .footer-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.8; max-width: 300px; }
+  .footer-heading { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 1rem; }
+  .footer-links { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-links a { font-size: 0.82rem; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+  .footer-links a:hover { color: var(--cream); }
+  .footer-bottom {
+    background: var(--charcoal);
+    border-top: 1px solid var(--border);
+    padding: 1rem 4rem;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.72rem; color: var(--muted);
+  }
+  .social-links { display: flex; gap: 1.2rem; }
+  .social-links a { color: var(--muted); text-decoration: none; font-size: 0.72rem; letter-spacing: 0.1em; transition: color 0.3s; }
+  .social-links a:hover { color: var(--gold); }
+
+  /* REVEAL ANIMATION */
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.1s; }
+  .reveal-delay-2 { transition-delay: 0.2s; }
+  .reveal-delay-3 { transition-delay: 0.3s; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    display: none; position: fixed; inset: 0; z-index: 1000;
+    background: rgba(0,0,0,0.9); align-items: center; justify-content: center;
+    cursor: pointer;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox-img { max-width: 80vw; max-height: 80vh; object-fit: contain; }
+  .lightbox-close {
+    position: absolute; top: 2rem; right: 2rem;
+    color: var(--gold); font-size: 2rem; cursor: pointer;
+    font-family: 'Raleway', sans-serif; font-weight: 300;
+    background: none; border: none;
+  }
+
+  /* MOBILE */
+  @media (max-width: 900px) {
+    section { padding: 5rem 1.5rem; }
+    nav { padding: 1.2rem 1.5rem; }
+    nav.scrolled { padding: 0.9rem 1.5rem; }
+    .nav-links, .nav-book-btn { display: none; }
+    .hamburger { display: flex; }
+    .booking-layout { grid-template-columns: 1fr; gap: 3rem; }
+    .booking-info { position: static; }
+    .form-row { grid-template-columns: 1fr; }
+    footer { grid-template-columns: 1fr; gap: 2rem; }
+    .about-strip { grid-template-columns: 1fr; gap: 2rem; }
+    .about-strip-divider { display: none; }
+    .footer-bottom { flex-direction: column; gap: 0.8rem; text-align: center; }
+    .timeslot-grid { grid-template-columns: repeat(3, 1fr); }
+    .hero-ornament { display: none; }
+  }
+  @media (max-width: 600px) {
+    .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
+    .timeslot-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">Glam <span>by You</span></a>
+  <ul class="nav-links">
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#testimonials">Reviews</a></li>
+    <li><a href="#booking">Contact</a></li>
+  </ul>
+  <a href="#booking" class="nav-book-btn">Book Now</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- MOBILE NAV MENU -->
+<div id="mobileMenu" style="display:none; position:fixed; inset:0; background:rgba(26,17,13,0.98); z-index:99; flex-direction:column; align-items:center; justify-content:center; gap:2.5rem;">
+  <button onclick="toggleMenu()" style="position:absolute;top:1.5rem;right:1.5rem;background:none;border:none;color:var(--gold);font-size:2rem;cursor:pointer;">×</button>
+  <a href="#portfolio" onclick="toggleMenu()" style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--cream);text-decoration:none;">Portfolio</a>
+  <a href="#pricing" onclick="toggleMenu()" style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--cream);text-decoration:none;">Pricing</a>
+  <a href="#testimonials" onclick="toggleMenu()" style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--cream);text-decoration:none;">Reviews</a>
+  <a href="#booking" onclick="toggleMenu()" style="font-family:'Playfair Display',serif;font-size:2rem;color:var(--gold);text-decoration:none;">Book Now</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-ornament">BEAUTY</div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Makeup · Skin · Hair · Wellness</p>
+    <h1 class="hero-title">Art that lives<br>on <em>your</em> face</h1>
+    <p class="hero-sub">Where every brushstroke is intentional, every look is transformative,<br>and beauty is a language spoken fluently.</p>
+    <div class="hero-ctas">
+      <a href="#portfolio" class="btn-primary">View Portfolio</a>
+      <a href="#booking" class="btn-ghost">Book a Session</a>
+    </div>
+  </div>
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="about-strip">
+  <div>
+    <div class="stat-num">5000+</div>
+    <div class="stat-label">Happy Clients</div>
+  </div>
+  <div class="about-strip-divider"></div>
+  <div>
+    <div class="stat-num">8</div>
+    <div class="stat-label">Years Experience</div>
+  </div>
+  <div class="about-strip-divider"></div>
+  <div>
+    <div class="stat-num">+4.5★</div>
+    <div class="stat-label">Google Ratings</div>
+  </div>
+</div>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="portfolio-header reveal">
+    <p class="section-eyebrow">My Work</p>
+    <h2 class="section-title">The <em>Portfolio</em></h2>
+    <div class="section-divider"></div>
+    <p style="color:var(--muted);font-size:0.9rem;">Each look is a story. Browse through transformations across makeup, skin, hair, and more.</p>
+  </div>
+
+  <div class="filter-tabs reveal">
+    <button class="filter-tab active" data-filter="all">All Work</button>
+    <button class="filter-tab" data-filter="makeup">Makeup</button>
+    <button class="filter-tab" data-filter="skin">Skin</button>
+    <button class="filter-tab" data-filter="hair">Hair</button>
+    <button class="filter-tab" data-filter="other">Other</button>
+  </div>
+
+  <div class="portfolio-grid" id="portfolioGrid">
+    <!-- MAKEUP -->
+    <div class="portfolio-item reveal" data-category="makeup">
+      <div class="portfolio-img p-makeup-1">
+        <div class="portfolio-placeholder">Bridal Glam<br>Look</div>
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Bridal Glam</h3>
+        <span>Makeup · Bridal</span>
+      </div>
+    </div>
+    <div class="portfolio-item reveal reveal-delay-1" data-category="makeup" style="grid-row: span 1;">
+      <div class="portfolio-img p-makeup-2">
+        <div class="portfolio-placeholder">Editorial<br>Look</div>
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Editorial Drama</h3>
+        <span>Makeup · Editorial</span>
+      </div>
+    </div>
+    <div class="portfolio-item reveal reveal-delay-2" data-category="makeup">
+      <div class="portfolio-img p-makeup-3">
+        <div class="portfolio-placeholder">Evening<br>Glam</div>
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Evening Glam</h3>
+        <span>Makeup · Party</span>
+      </div>
+    </div>
+    <!-- SKIN -->
+    <div class="portfolio-item reveal reveal-delay-1" data-category="skin">
+      <div class="portfolio-img p-skin-1">
+        <div class="portfolio-placeholder">Glow<br>Treatment</div>
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Glass Skin</h3>
+        <span>Skin · Treatment</span>
+      </div>
+    </div>
+    <div class="portfolio-item reveal reveal-delay-2" data-category="skin">
+      <div class="portfolio-img p-skin-2">
+        <div class="portfolio-placeholder">Skin<br>Glow Up</div>
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Radiant Glow</h3>
+        <span>Skin · Facial</span>
+      </div>
+    </div>
+    <div class="portfolio-item reveal" data-category="skin">
+      <div class="portfolio-img p-skin-3">
+        <div class="portfolio-placeholder">Natural<br>Skin Look</div>
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Natural Beauty</h3>
+        <span>Skin · No-Makeup</span>
+      </div>
+    </div>
+    <!-- HAIR -->
+    <div class="portfolio-item reveal reveal-delay-1" data-category="hair">
+      <div class="portfolio-img p-hair-1">
+        <div class="portfolio-placeholder">Bridal<br>Updo</div>
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Bridal Updo</h3>
+        <span>Hair · Bridal</span>
+      </div>
+    </div>
+    <div class="portfolio-item reveal reveal-delay-2" data-category="hair">
+      <div class="portfolio-img p-hair-2">
+        <div class="portfolio-placeholder">Soft<br>Waves</div>
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Soft Waves</h3>
+        <span>Hair · Styling</span>
+      </div>
+    </div>
+    <div class="portfolio-item reveal" data-category="hair">
+      <div class="portfolio-img p-hair-3">
+        <div class="portfolio-placeholder">Sleek<br>Blowout</div>
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Sleek Blowout</h3>
+        <span>Hair · Blowout</span>
+      </div>
+    </div>
+    <!-- OTHER -->
+    <div class="portfolio-item reveal reveal-delay-1" data-category="other">
+      <div class="portfolio-img p-other-1">
+        <div class="portfolio-placeholder">Lash<br>Extensions</div>
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Lash Extensions</h3>
+        <span>Other · Lashes</span>
+      </div>
+    </div>
+    <div class="portfolio-item reveal reveal-delay-2" data-category="other">
+      <div class="portfolio-img p-other-2">
+        <div class="portfolio-placeholder">Brow<br>Lamination</div>
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Brow Lamination</h3>
+        <span>Other · Brows</span>
+      </div>
+    </div>
+    <div class="portfolio-item reveal" data-category="other">
+      <div class="portfolio-img p-other-3">
+        <div class="portfolio-placeholder">Special FX<br>Look</div>
+      </div>
+      <div class="portfolio-overlay">
+        <h3>Special FX</h3>
+        <span>Other · Creative</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="upload-notice reveal" style="margin-top:2.5rem;">
+    <strong>📸 Add Your Real Photos:</strong> Replace the placeholder &lt;div&gt; elements with &lt;img&gt; tags pointing to your actual portfolio images in the same folder. Rename images like <em>makeup-1.jpg, skin-2.jpg</em>, etc.
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-header reveal">
+    <p class="section-eyebrow">Rates & Services</p>
+    <h2 class="section-title">Transparent <em>Pricing</em></h2>
+    <div class="section-divider" style="margin-left:auto;margin-right:auto;background:linear-gradient(to right, transparent, var(--gold), transparent);"></div>
+    <p style="color:var(--muted);font-size:0.9rem;">All services use premium, dermatologist-approved products. Prices vary by complexity — contact for a custom quote.</p>
+  </div>
+
+  <div class="pricing-grid">
+    <!-- MAKEUP -->
+    <div class="pricing-card reveal">
+      <div class="pricing-icon">💄</div>
+      <div class="pricing-category">Makeup</div>
+      <div class="pricing-service">Makeup Artistry</div>
+      <div class="pricing-desc">From everyday glam to full bridal looks, tailored to your vision.</div>
+      <div class="pricing-line">
+        <span>Everyday / Natural Look <span class="pricing-duration">· 45 min</span></span>
+        <span class="price">₹1,500</span>
+      </div>
+      <div class="pricing-line">
+        <span>Party / Evening Look <span class="pricing-duration">· 60 min</span></span>
+        <span class="price">₹2,500</span>
+      </div>
+      <div class="pricing-line">
+        <span>Engagement Look <span class="pricing-duration">· 90 min</span></span>
+        <span class="price">₹4,000</span>
+      </div>
+      <div class="pricing-line">
+        <span>Bridal Makeup <span class="pricing-duration">· 2–3 hrs</span></span>
+        <span class="price">₹8,000+</span>
+      </div>
+      <div class="pricing-note">Airbrush finish available at +₹1,000. Trial session recommended.</div>
+    </div>
+
+    <!-- SKIN - FEATURED -->
+    <div class="pricing-card featured reveal reveal-delay-1">
+      <div class="featured-badge">Most Popular</div>
+      <div class="pricing-icon">✨</div>
+      <div class="pricing-category">Skincare</div>
+      <div class="pricing-service">Skin Treatments</div>
+      <div class="pricing-desc">Glow-up treatments using premium serums and professional-grade techniques.</div>
+      <div class="pricing-line">
+        <span>Deep Cleansing Facial <span class="pricing-duration">· 60 min</span></span>
+        <span class="price">₹2,000</span>
+      </div>
+      <div class="pricing-line">
+        <span>Glass Skin Treatment <span class="pricing-duration">· 75 min</span></span>
+        <span class="price">₹3,500</span>
+      </div>
+      <div class="pricing-line">
+        <span>Anti-Aging Facial <span class="pricing-duration">· 90 min</span></span>
+        <span class="price">₹4,500</span>
+      </div>
+      <div class="pricing-line">
+        <span>Bridal Skin Package <span class="pricing-duration">· 4 sessions</span></span>
+        <span class="price">₹12,000</span>
+      </div>
+      <div class="pricing-note">Package discounts available. Pre-event skin prep recommended 4 weeks ahead.</div>
+    </div>
+
+    <!-- HAIR -->
+    <div class="pricing-card reveal reveal-delay-2">
+      <div class="pricing-icon">💇</div>
+      <div class="pricing-category">Hair Styling</div>
+      <div class="pricing-service">Hair Artistry</div>
+      <div class="pricing-desc">From blowouts to intricate bridal updos, every strand styled to perfection.</div>
+      <div class="pricing-line">
+        <span>Blowout / Styling <span class="pricing-duration">· 30–45 min</span></span>
+        <span class="price">₹1,200</span>
+      </div>
+      <div class="pricing-line">
+        <span>Soft Curls / Waves <span class="pricing-duration">· 45 min</span></span>
+        <span class="price">₹1,800</span>
+      </div>
+      <div class="pricing-line">
+        <span>Half-Up Styles <span class="pricing-duration">· 60 min</span></span>
+        <span class="price">₹2,500</span>
+      </div>
+      <div class="pricing-line">
+        <span>Bridal Updo <span class="pricing-duration">· 90 min</span></span>
+        <span class="price">₹4,000+</span>
+      </div>
+      <div class="pricing-note">Hair extensions and accessories can be provided at additional cost.</div>
+    </div>
+
+    <!-- OTHER -->
+    <div class="pricing-card reveal">
+      <div class="pricing-icon">🌸</div>
+      <div class="pricing-category">Add-Ons & More</div>
+      <div class="pricing-service">Specialty Services</div>
+      <div class="pricing-desc">Enhance your look with these specialist treatments and finishing touches.</div>
+      <div class="pricing-line">
+        <span>Lash Extensions (Classic) <span class="pricing-duration">· 90 min</span></span>
+        <span class="price">₹2,500</span>
+      </div>
+      <div class="pricing-line">
+        <span>Lash Extensions (Volume) <span class="pricing-duration">· 120 min</span></span>
+        <span class="price">₹4,000</span>
+      </div>
+      <div class="pricing-line">
+        <span>Brow Lamination + Tint <span class="pricing-duration">· 45 min</span></span>
+        <span class="price">₹1,800</span>
+      </div>
+      <div class="pricing-line">
+        <span>At-Home / On-Location <span class="pricing-duration">· varies</span></span>
+        <span class="price">+₹500</span>
+      </div>
+      <div class="pricing-note">Group bookings (4+ people) receive 10% off. On-location travel surcharge applies beyond 10km.</div>
+    </div>
+
+    <!-- PACKAGES -->
+    <div class="pricing-card reveal reveal-delay-1" style="grid-column: span 2;">
+      <div class="pricing-icon">👑</div>
+      <div class="pricing-category">Bridal Packages</div>
+      <div class="pricing-service">Full Wedding Packages</div>
+      <div class="pricing-desc">Everything you need for the most important day of your life — curated, seamless, and stunning.</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin-top:0.5rem;">
+        <div style="border:1px solid var(--border);padding:1.2rem;">
+          <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem;">Silver</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--cream);margin-bottom:0.3rem;">₹15,000</div>
+          <div style="font-size:0.78rem;color:var(--muted);">Bridal Makeup + Hairstyle</div>
+        </div>
+        <div style="border:1px solid var(--gold);padding:1.2rem;background:rgba(201,169,110,0.05);">
+          <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);margin-bottom:0.3rem;">Gold ✦ Best Value</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--cream);margin-bottom:0.3rem;">₹22,000</div>
+          <div style="font-size:0.78rem;color:var(--muted);">Makeup + Hair + Skin + 1 Bridesmaid</div>
+        </div>
+        <div style="border:1px solid var(--border);padding:1.2rem;">
+          <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem;">Platinum</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--cream);margin-bottom:0.3rem;">₹35,000</div>
+          <div style="font-size:0.78rem;color:var(--muted);">Full team · Full day · 3 Bridesmaids</div>
+        </div>
+        <div style="border:1px solid var(--border);padding:1.2rem;">
+          <div style="font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:0.3rem;">Bespoke</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--cream);margin-bottom:0.3rem;">Custom</div>
+          <div style="font-size:0.78rem;color:var(--muted);">Tell me your vision — let's create it</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BOOKING -->
+<section id="booking">
+  <div class="booking-layout">
+    <div class="booking-info reveal">
+      <p class="section-eyebrow">Schedule</p>
+      <h2 class="section-title">Book a <em>Session</em></h2>
+      <div class="section-divider"></div>
+      <p>Fill in your details, pick a date and time, and your booking request will open directly in Google Calendar — confirming the slot in one click.</p>
+      <p>Available <strong style="color:var(--gold);">Tuesday – Sunday</strong>, 9 AM to 7 PM. Closed Mondays.</p>
+      <div class="booking-contact-item">
+        <strong>📍</strong> <span>Jamshedpur, Jharkhand</span>
+      </div>
+      <div class="booking-contact-item">
+        <strong>📞</strong> <span>+91 9431756053</span>
+      </div>
+      <div class="booking-contact-item">
+        <strong>📸</strong> <span>98pranit@gmail.com</span>
+      </div>
+      <div class="booking-contact-item">
+        <strong>✉️</strong> <span>yourname@email.com</span>
+      </div>
+      <br>
+      <div style="border:1px solid var(--border);padding:1.2rem;font-size:0.78rem;color:var(--muted);line-height:1.8;">
+        <strong style="color:var(--gold);display:block;margin-bottom:0.4rem;">Booking Policy</strong>
+        A 30% advance is required to confirm your booking. Cancellations 48+ hours before receive a full refund. Same-day cancellations forfeit the advance.
+      </div>
+    </div>
+
+    <div class="reveal reveal-delay-1">
+      <div class="booking-form">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" id="clientName" placeholder="Full name">
+          </div>
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="clientPhone" placeholder="+91 XXXXX XXXXX">
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" id="clientEmail" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>Service Required</label>
+          <select id="serviceType">
+            <option value="">— Select a service —</option>
+            <optgroup label="Makeup">
+              <option value="Everyday / Natural Makeup Look">Everyday / Natural Look — ₹1,500</option>
+              <option value="Party / Evening Makeup Look">Party / Evening Look — ₹2,500</option>
+              <option value="Engagement Makeup Look">Engagement Look — ₹4,000</option>
+              <option value="Bridal Makeup">Bridal Makeup — ₹8,000+</option>
+            </optgroup>
+            <optgroup label="Skin">
+              <option value="Deep Cleansing Facial">Deep Cleansing Facial — ₹2,000</option>
+              <option value="Glass Skin Treatment">Glass Skin Treatment — ₹3,500</option>
+              <option value="Anti-Aging Facial">Anti-Aging Facial — ₹4,500</option>
+              <option value="Bridal Skin Package (4 sessions)">Bridal Skin Package — ₹12,000</option>
+            </optgroup>
+            <optgroup label="Hair">
+              <option value="Blowout / Hair Styling">Blowout / Styling — ₹1,200</option>
+              <option value="Soft Curls / Waves">Soft Curls / Waves — ₹1,800</option>
+              <option value="Half-Up Hair Style">Half-Up Style — ₹2,500</option>
+              <option value="Bridal Updo">Bridal Updo — ₹4,000+</option>
+            </optgroup>
+            <optgroup label="Add-Ons">
+              <option value="Classic Lash Extensions">Classic Lash Extensions — ₹2,500</option>
+              <option value="Volume Lash Extensions">Volume Lash Extensions — ₹4,000</option>
+              <option value="Brow Lamination + Tint">Brow Lamination + Tint — ₹1,800</option>
+            </optgroup>
+            <optgroup label="Packages">
+              <option value="Silver Bridal Package">Silver Bridal Package — ₹15,000</option>
+              <option value="Gold Bridal Package">Gold Bridal Package — ₹22,000</option>
+              <option value="Platinum Bridal Package">Platinum Bridal Package — ₹35,000</option>
+              <option value="Bespoke / Custom Package">Bespoke / Custom Package</option>
+            </optgroup>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Preferred Date</label>
+          <input type="date" id="bookingDate" onchange="renderTimeslots()">
+        </div>
+
+        <div class="timeslot-section" id="timeslotSection" style="display:none;">
+          <div class="timeslot-label">Select a Time Slot</div>
+          <div class="timeslot-grid" id="timeslotGrid"></div>
+          <div class="timeslot-hint">Strikethrough slots are unavailable. Select one to continue.</div>
+        </div>
+
+        <div class="form-group">
+          <label>Additional Notes</label>
+          <textarea id="clientNotes" placeholder="Any special requests, skin concerns, references, or event details…"></textarea>
+        </div>
+
+        <button class="book-cta" id="bookBtn" onclick="openGoogleCalendar()" disabled>
+          <svg class="gcal-icon" viewBox="0 0 18 18" fill="none">
+            <rect x="1" y="3" width="16" height="14" rx="2" stroke="var(--mocha)" stroke-width="1.5"/>
+            <path d="M1 7h16" stroke="var(--mocha)" stroke-width="1.5"/>
+            <path d="M6 1v4M12 1v4" stroke="var(--mocha)" stroke-width="1.5" stroke-linecap="round"/>
+            <rect x="4" y="10" width="3" height="3" rx="0.5" fill="var(--mocha)"/>
+            <rect x="10" y="10" width="3" height="3" rx="0.5" fill="var(--mocha)"/>
+          </svg>
+          Open in Google Calendar to Confirm
+        </button>
+        <p class="booking-policy">
+          By booking, you agree to the cancellation policy above.<br>
+          Need to reschedule? Email <a href="mailto:yourname@email.com">yourname@email.com</a> at least 48 hrs before.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="testi-header reveal">
+    <p class="section-eyebrow">Client Love</p>
+    <h2 class="section-title">What They <em>Say</em></h2>
+    <div class="section-divider" style="margin-left:auto;margin-right:auto;background:linear-gradient(to right, transparent, var(--gold), transparent);"></div>
+  </div>
+  <div class="testi-grid">
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"I cried when I saw myself in the mirror — not from stress, but from pure joy. She made me look exactly like my dream self on my wedding day."</div>
+      <div class="testi-name">Priya S.</div>
+      <div class="testi-event">Bridal Makeup · Patna</div>
+    </div>
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"The glass skin treatment is absolutely magical. My skin has never looked this dewy and healthy. I'm a client for life now!"</div>
+      <div class="testi-name">Ananya K.</div>
+      <div class="testi-event">Skin Treatment · Monthly Client</div>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"Booked the Gold bridal package for my sister's wedding. The entire team was professional, warm, and the results were absolutely stunning."</div>
+      <div class="testi-name">Neha R.</div>
+      <div class="testi-event">Gold Bridal Package</div>
+    </div>
+    <div class="testi-card reveal">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"My lash extensions are so natural-looking that people think they're real! The precision and care put into the work is unmatched."</div>
+      <div class="testi-name">Simran J.</div>
+      <div class="testi-event">Volume Lash Extensions</div>
+    </div>
+    <div class="testi-card reveal reveal-delay-1">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"She understood my vibe instantly — a soft, editorial look for my portfolio shoot. The makeup lasted 10 hours under studio lights. Incredible."</div>
+      <div class="testi-name">Mehak A.</div>
+      <div class="testi-event">Editorial Makeup · Shoot Day</div>
+    </div>
+    <div class="testi-card reveal reveal-delay-2">
+      <div class="testi-stars">★★★★★</div>
+      <div class="testi-quote">"Came for a party look and left feeling like a completely different, more confident version of myself. The booking process was so smooth too!"</div>
+      <div class="testi-name">Riya V.</div>
+      <div class="testi-event">Party / Evening Makeup</div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">
+    <div class="footer-logo">Glam <em>by You</em></div>
+    <p class="footer-desc">Premium makeup, skin, and hair artistry in Patna, Bihar. Crafting beauty that tells your story — on every occasion that matters.</p>
+  </div>
+  <div>
+    <div class="footer-heading">Navigate</div>
+    <ul class="footer-links">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#testimonials">Reviews</a></li>
+      <li><a href="#booking">Book Now</a></li>
+    </ul>
+  </div>
+  <div>
+    <div class="footer-heading">Services</div>
+    <ul class="footer-links">
+      <li><a href="#pricing">Makeup Artistry</a></li>
+      <li><a href="#pricing">Skin Treatments</a></li>
+      <li><a href="#pricing">Hair Styling</a></li>
+      <li><a href="#pricing">Lash Extensions</a></li>
+      <li><a href="#pricing">Bridal Packages</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <span>© 2025 Priya Beauty Salon & Spa. All rights reserved.</span>
+  <div class="social-links">
+    <a href="#">Instagram</a>
+    <a href="#">Pinterest</a>
+    <a href="#">WhatsApp</a>
+  </div>
+</div>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close">×</button>
+</div>
+
+<script>
+  // NAV SCROLL
+  window.addEventListener('scroll', () => {
+    document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // MOBILE MENU
+  function toggleMenu() {
+    const m = document.getElementById('mobileMenu');
+    m.style.display = m.style.display === 'flex' ? 'none' : 'flex';
+  }
+
+  // REVEAL ON SCROLL
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.12 });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // PORTFOLIO FILTER
+  document.querySelectorAll('.filter-tab').forEach(tab => {
+    tab.addEventListener('click', function() {
+      document.querySelectorAll('.filter-tab').forEach(t => t.classList.remove('active'));
+      this.classList.add('active');
+      const filter = this.dataset.filter;
+      document.querySelectorAll('.portfolio-item').forEach(item => {
+        const match = filter === 'all' || item.dataset.category === filter;
+        item.style.display = match ? 'block' : 'none';
+        item.style.opacity = match ? '1' : '0';
+      });
+    });
+  });
+
+  // TIMESLOTS
+  const ALL_SLOTS = ['9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','12:00 PM','12:30 PM','1:00 PM','1:30 PM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM','5:00 PM','5:30 PM','6:00 PM','6:30 PM'];
+  // Simulate some booked slots (in real use, fetch from your backend or Google Sheets)
+  const BOOKED = { /* 'YYYY-MM-DD': ['9:00 AM','11:00 AM'] */ };
+  let selectedSlot = null;
+
+  function renderTimeslots() {
+    const date = document.getElementById('bookingDate').value;
+    if (!date) return;
+    const day = new Date(date + 'T12:00:00').getDay();
+    const section = document.getElementById('timeslotSection');
+    const grid = document.getElementById('timeslotGrid');
+    if (day === 1) { // Monday closed
+      grid.innerHTML = '<p style="color:var(--rose);font-size:0.82rem;grid-column:1/-1;padding:1rem 0;">We are closed on Mondays. Please choose another day.</p>';
+      section.style.display = 'block'; selectedSlot = null; updateBookBtn(); return;
+    }
+    const booked = BOOKED[date] || [];
+    grid.innerHTML = ALL_SLOTS.map(slot => {
+      const isBooked = booked.includes(slot);
+      return `<button class="timeslot${isBooked ? ' booked' : ''}" onclick="selectSlot(this, '${slot}')" ${isBooked ? 'disabled' : ''}>${slot}</button>`;
+    }).join('');
+    section.style.display = 'block';
+    selectedSlot = null; updateBookBtn();
+  }
+
+  function selectSlot(el, slot) {
+    document.querySelectorAll('.timeslot').forEach(t => t.classList.remove('selected'));
+    el.classList.add('selected');
+    selectedSlot = slot;
+    updateBookBtn();
+  }
+
+  function updateBookBtn() {
+    const name = document.getElementById('clientName').value.trim();
+    const service = document.getElementById('serviceType').value;
+    const date = document.getElementById('bookingDate').value;
+    const btn = document.getElementById('bookBtn');
+    btn.disabled = !(name && service && date && selectedSlot);
+  }
+
+  ['clientName','clientEmail','clientPhone','serviceType','bookingDate'].forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', updateBookBtn);
+    if (el) el.addEventListener('change', updateBookBtn);
+  });
+
+  // Min date = today
+  document.getElementById('bookingDate').min = new Date().toISOString().split('T')[0];
+
+  // GOOGLE CALENDAR BOOKING
+  function openGoogleCalendar() {
+    const name = document.getElementById('clientName').value.trim();
+    const email = document.getElementById('clientEmail').value.trim();
+    const phone = document.getElementById('clientPhone').value.trim();
+    const service = document.getElementById('serviceType').value;
+    const date = document.getElementById('bookingDate').value;
+    const notes = document.getElementById('clientNotes').value.trim();
+
+    if (!name || !service || !date || !selectedSlot) {
+      alert('Please fill in your name, service, date, and select a time slot.');
+      return;
+    }
+
+    // Parse date & time
+    const [year, month, day] = date.split('-');
+    const [time, ampm] = selectedSlot.split(' ');
+    let [hours, mins] = time.split(':').map(Number);
+    if (ampm === 'PM' && hours !== 12) hours += 12;
+    if (ampm === 'AM' && hours === 12) hours = 0;
+
+    // Format for Google Calendar (YYYYMMDDTHHmmss)
+    const pad = n => String(n).padStart(2,'0');
+    const startDT = `${year}${month}${pad(day)}T${pad(hours)}${pad(mins)}00`;
+    // End: +90 minutes
+    const endDate = new Date(Number(year), Number(month)-1, Number(day), hours, mins+90);
+    const endDT = `${endDate.getFullYear()}${pad(endDate.getMonth()+1)}${pad(endDate.getDate())}T${pad(endDate.getHours())}${pad(endDate.getMinutes())}00`;
+
+    const title = encodeURIComponent(`💄 ${service} — ${name}`);
+    const details = encodeURIComponent(
+      `Client: ${name}\nPhone: ${phone || 'N/A'}\nEmail: ${email || 'N/A'}\nService: ${service}\nTime: ${selectedSlot}\n\nNotes: ${notes || 'None'}\n\n---\nBooked via Glam by You website`
+    );
+    const location = encodeURIComponent('Jamshedpur, Jharkhand — or client location (see notes)');
+
+    const gcalUrl = `https://calendar.google.com/calendar/r/eventedit?text=${title}&dates=${startDT}/${endDT}&details=${details}&location=${location}`;
+    window.open(gcalUrl, '_blank');
+  }
+
+  // Set min date
+  document.addEventListener('DOMContentLoaded', () => {
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('bookingDate').min = today;
+  });
+</script>
+</body>
+</html>
